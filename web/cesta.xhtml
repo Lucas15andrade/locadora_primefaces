@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cesta de aluguel</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:dataTable value="#{locadora.cestaLocadora}" var="loc">
+                <p:column headerText="Título">
+                    <h:outputText value="#{loc.filme.titulo}"/>              
+                </p:column>
+                <p:column headerText="Descrição">
+                    <h:outputText value="#{loc.filme.descricao}"/>              
+                </p:column>
+                <p:column headerText="Quantidade na cesta">
+                    <h:outputText value="#{loc.quantidade}"/>              
+                </p:column>
+                <p:column headerText="Remover">
+                    <p:growl id="growl" life="2000"/>
+                    <p:commandButton style="font-size: 14px" id="withIcon" value="Remover na cesta" update="growl" actionListener="#{locadora.removerCesta(loc)}" icon="ui-icon-trash"/>
+                </p:column>
+            </p:dataTable>
+
+            <br/>
+            <p style="font-family: arial; font-size: 14px">Valor total do aluguel: R$<p:outputLabel value="#{locadora.precoTotal}"/> </p>
+            <br/>
+            <br/>
+            <p:button style="font-size: 14px" outcome="/index.xhtml" value="Lista de produtos" icon="ui-icon-circle-triangle-w"/>
+            <br/>
+            <br/>
+            <p:growl id="growl" life="2000"/>
+            <p:commandButton style="font-size: 14px" id="withIcon" value="Finalizar aluguel!" update="growl" actionListener="#{locadora.finalizarCesta()}" icon="ui-icon-circle-check"/>
+        </h:form>
+    </h:body>
+</html>
+

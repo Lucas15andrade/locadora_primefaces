@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Lista de filmes</title>
+        
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:dataTable value="#{locadora.listaFilme}" var="filme">
+                <p:column headerText="ID">
+                    <h:outputText value="#{filme.idFilme}"/>
+                </p:column>
+                <p:column headerText="Título">
+                    <h:outputText value="#{filme.titulo}"/>
+                </p:column>
+                <p:column headerText="Data de lançamento">
+                    <h:outputText value="#{filme.dataLancamento}">
+                        <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Nota">
+                    <h:outputText value="#{filme.nota}"/>
+                </p:column>
+                <p:column headerText="Descrição">
+                    <h:outputText value="#{filme.descricao}"/>
+                </p:column>
+                <p:column headerText="Quantidade">
+                    <h:outputText value="#{filme.quantidade}"/>
+                </p:column>
+                <p:column headerText="Remover">
+                    <p:growl id="growl" life="2000"/>
+                    <p:commandButton style="font-size: 14px" disabled="#{filme.quantidade == 0}" id="withIcon" value="Adicionar na cesta" update="growl" actionListener="#{locadora.adicionarCesta(filme)}" icon="ui-icon-disk"/>
+                </p:column>
+                
+            </p:dataTable>
+            <br/>
+            <p:button style="font-size: 14px" outcome="/cadastro.xhtml" value="Cadastrar novo produto"/>
+            <br/>
+            <br/>
+            <p:button style="font-size: 14px" outcome="/cesta.xhtml" value="Cesta de aluguel"/>
+        </h:form>
+        <div>
+            <p>
+                VRAAAU
+            </p>
+        </div>
+    </h:body>
+</html>
+
