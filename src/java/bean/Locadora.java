@@ -6,6 +6,7 @@
 package bean;
 
 import com.sun.javafx.logging.PulseLogger;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,6 +14,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -72,6 +75,14 @@ public class Locadora {
         }
         cestaLocadora.clear();
         precoTotal = 0.0;
+    }
+    
+    public void cancelar(){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(Locadora.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void removerCesta(CestaLocadora loc) {
 

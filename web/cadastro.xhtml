@@ -32,8 +32,8 @@
             </p>
             <br/>
             <p:growl id="growl" life="5000"/>
-            <p:commandButton style="font-size: 14px" id="withIcon" value="Cadastrar produto!" update="growl" actionListener="#{locadora.cadastrarFilme()}" icon="ui-icon-disk"/>
-
+            <p:commandButton style="font-size: 14px" id="withIcon" value="Cadastrar produto" update="growl" actionListener="#{locadora.cadastrarFilme()}" icon="ui-icon-disk"/>
+            <p:commandButton immediate="true" style="font-size: 14px" value="Cancelar" update="growl" actionListener="#{locadora.cancelar()}" icon="ui-icon-disk"/>
         </h:form>
         <br/>
         <p:button style="font-size: 14px" outcome="/index.xhtml" value="Listar produtos"/>
